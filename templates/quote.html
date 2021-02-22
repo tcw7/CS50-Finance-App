@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h2>STOCK SEARCH</h2><br>
+        <p>Type in a stock ticker symbol in the search bar below to receive a quote.</p><br>
+        <form action="/quote" method="post">
+            <input type="text" name="ticker" placeholder="ticker symbol" autofocus>
+            <button type="submit" name="search">Search</button>
+        </form>
+    </div>
+{% endblock %}

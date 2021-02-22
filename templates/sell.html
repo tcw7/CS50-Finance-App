@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h2>SELL ORDER</h2><br>
+        <p>Type in a stock or ticker symbol in the search box below. Then indicate the quantity of shares you would like to sell.</p>
+        <p>When you are ready to send a sell order, click the "SELL" button, or press enter.</p><br>
+        <form action="/sell" method="post">
+            <div class="form-group">
+                <label for="sel1">Select ticker:</label>
+                <select class="form-control" id="sel1" name="ticker">
+                    {% for item in assets %}
+                    <option>{{ item["ticker"] }}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" name="shares" placeholer="quantity of shares" min=0>
+                <button type="submit" name="search">SELL</button>
+            </div><br>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <h2>My Transaction History</h2><br>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Date and Time</th>
+                <th scope="col">Asset</th>
+                <th scope="col">Bought or Sold</th>
+                <th scope="col">Qty. of Shares</th>
+                <th scope="col">Price per Share</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in history %}
+            <tr>
+                <th scope="row">{{ item["date"] }}</th>
+                <td>{{ item["ticker"] }}</td>
+                <td>
+                    {% if item["qty"] < 0 %}
+                    {{ sold }}
+                    {% endif %}
+                    {% if item["qty"] > 0 %}
+                    {{ bought }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item["qty"] < 0 %}
+                    {{ item["qty"] * -1 }}
+                    {% endif %}
+                    {% if item["qty"] > 0 %}
+                    {{ item["qty"] }}
+                    {% endif %}
+                </td>
+                <td>${{ item["price"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

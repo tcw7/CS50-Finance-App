@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h2>BUY ORDER</h2><br>
+        <p>Type in a stock or ticker symbol in the search box below. Then indicate the quantity of shares you would like to purchase.</p>
+        <p>When you are ready to send a buy order, click the "BUY" button, or press enter.</p><br>
+        <form action="/buy" method="post">
+            <input type="text" name="ticker" placeholder="ticker symbol" autofocus>
+            <input type="number" name="shares" placeholer="quantity of shares" min=0>
+            <button type="submit" name="search">BUY</button>
+        </form>
+    </div>
+{% endblock %}

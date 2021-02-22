@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <h2>My Portfolio</h2><br>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Qty. of Shares</th>
+                <th scope="col">Current Price per Share</th>
+                <th scope="col">Current Portfolio Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in assets %}
+            <tr>
+                <th scope="row">{{ item["ticker"] }}</th>
+                <td>{{ item["qty"] }}</td>
+                <td>${{ item["price"] }}</td>
+                <td>${{ item["current_value"] }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td></td>
+            </tr>
+            <tr>
+                <th scope="row">Cash Available for Trading</th>
+                <td></td>
+                <td></td>
+                <td>${{ cash }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Net Liquid</th>
+                <td></td>
+                <td></td>
+                <td>${{ cash_total }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
